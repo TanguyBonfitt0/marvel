@@ -1,0 +1,31 @@
+import BlaguesAPI from 'blagues-api';
+
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzAwMzgxNjA3NjMwMDc4MDgzIiwibGltaXQiOjEwMCwia2V5IjoicmswZFQ3cnhiYlAxY2hZeXl2dmJGSjRHazZUc3FaU21MaWpOMnpQdUNEczhlRmdZbUIiLCJjcmVhdGVkX2F0IjoiMjAyNS0wNS0xM1QxNDozNjoxNyswMDowMCIsImlhdCI6MTc0NzE0Njk3N30.S37-Ed2r_VSQUZjWJm1978wrIcDNsEyHhp_HQd00Mv4
+';
+const blagues = new BlaguesAPI(token);
+
+// Récupérer une blague aléatoire
+async function getRandomJoke() {
+    try {
+        const joke = await blagues.random();
+        console.log('Blague:', joke.joke);
+        console.log('Réponse:', joke.answer);
+    } catch (error) {
+        console.error('Erreur:', error);
+    }
+}
+
+// Récupérer une blague d'une catégorie spécifique
+async function getCategorizedJoke() {
+    try {
+        const joke = await blagues.randomCategorized(blagues.categories.DARK);
+        console.log('Blague:', joke.joke);
+        console.log('Réponse:', joke.answer);
+    } catch (error) {
+        console.error('Erreur:', error);
+    }
+}
+
+// Exécuter les fonctions
+getRandomJoke();
+getCategorizedJoke();
