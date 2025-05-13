@@ -1,32 +1,12 @@
-// src/App.tsx
-import { useEffect, useState } from 'react';
-
+import { useEffect } from 'react';
 import { fetchMarvelData } from './api/MarvelAPI';
 
-const App = () => {
-    const [characters, setCharacters] = useState([]);
-
+function App() {
     useEffect(() => {
-        const loadData = async () => {
-            const data = await fetchMarvelData();
-            if (data) setCharacters(data.data.results);
-        };
-        loadData();
+        fetchMarvelData();
     }, []);
 
-    return (
-        <div>
-            <h1>Personnages Marvel</h1>
-            <ul>
-                {characters.map((char: any) => (
-                    <li key={char.id}>
-                        <img src={`${char.thumbnail.path}/standard_xlarge.${char.thumbnail.extension}`} alt={char.name} />
-                        <p>{char.name}</p>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-};
+    return <h1>Marvel App</h1>;
+}
 
 export default App;
