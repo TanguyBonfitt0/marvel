@@ -1,27 +1,29 @@
-// App.tsx
+// src/App.tsx
+import React, { useEffect, useState } from 'react';
+import { fetchMarvelData } from './api/MarvelAPI';
 
-import React, { useEffect, useState } from "react";
-import { fetchMarvelData } from "./api/MarvelAPI";
-
-const App: React.FC = () => {
-    const [marvelData, setMarvelData] = useState<any>(null); // Store fetched data
+const App = () => {
+    const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
-        const getData = async () => {
+        const loadData = async () => {
             const data = await fetchMarvelData();
-            setMarvelData(data); // Store the fetched data in the state
+            if (data) setCharacters(data.data.results);
         };
-        getData();
-    }, []); // Empty dependency array ensures it runs only once when the component mounts
+        loadData();
+    }, []);
 
     return (
         <div>
-            <h1>Marvel Characters</h1>
-            {marvelData ? (
-                <pre>{JSON.stringify(marvelData, null, 2)}</pre> // Display data in a readable format
-            ) : (
-                <p>Loading...</p>
-            )}
+            <h1>Personnages Marvel</h1>
+            <ul>
+                {characters.map((char: any) => (
+                    <li key={char.id}>
+                        <img src={`${char.thumbnail.path}/standard_xlarge.${char.thumbnail.extension}`} alt={char.name} />
+                        <p>{char.name}</p>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
