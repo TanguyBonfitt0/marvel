@@ -1,12 +1,28 @@
-import { useEffect } from 'react';
-import { fetchMarvelData } from './api/MarvelAPI';
+import { useEffect, useState } from 'react';
 
 function App() {
+    const [characters, setCharacters] = useState([]);
+
     useEffect(() => {
-        fetchMarvelData();
+        fetch('/api/marvel')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setCharacters(data.data.results); // Affiche les persos
+            })
+            .catch(err => console.error('Erreur API Marvel:', err));
     }, []);
 
-    return <h1>Marvel App</h1>;
+    return (
+        <div>
+            <h1>Marvel Characters</h1>
+            <ul>
+                {characters.map((char: any) => (
+                    <li key={char.id}>{char.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default App;
