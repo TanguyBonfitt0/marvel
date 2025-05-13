@@ -15,7 +15,7 @@ function App() {
 
     return (
         <div>
-            <h1>Marvel Characters</h1>
+            <h1>Marvel Character</h1>
             <ul>
                 {characters.map((char: any) => (
                     <li key={char.id}>{char.name}</li>
