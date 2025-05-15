@@ -1,0 +1,41 @@
+@import './variables.css';
+
+.tiktok-wrapper {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tiktok-slide {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.joke-content {
+    text-align: center;
+    max-width: 90%;
+}
+
+.joke-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.joke-content .answer {
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.tiktok-slide {
+    height: calc(100vh - 60px); /* 60px = hauteur du footer */
+}

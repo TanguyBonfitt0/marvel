@@ -1,0 +1,16 @@
+@import './variables.css';
+
+footer {
+    background-color: var(--color-footer);
+    color: var(--color-footer-text);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.95rem;
+    font-family: var(--font-main);
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
