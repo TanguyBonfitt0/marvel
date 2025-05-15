@@ -3,9 +3,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     padding: 2rem;
-    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
     text-align: center;
     gap: 2rem; /* Espace naturel entre la carte et le bouton */
 }
