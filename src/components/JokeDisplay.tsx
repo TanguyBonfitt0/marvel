@@ -41,7 +41,7 @@ const TikTokJokes: React.FC<HomeProps> = ({ setCurrentJoke }) => {
 
   // scroll ou swipe détecté
   useEffect(() => {
-    const handleScroll = (e: WheelEvent | TouchEvent) => {
+    const handleScroll = () => {
       fetchJoke();
     };
 
